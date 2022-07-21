@@ -1,29 +1,28 @@
 import 'reflect-metadata'
 import { NestFactory } from '@nestjs/core';
-import {
-  FastifyAdapter,
-  NestFastifyApplication,
-} from '@nestjs/platform-fastify';
+import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { AppModule } from './app.module';
 import { fastify } from 'fastify';
-import type { FastifyServerOptions, FastifyInstance } from 'fastify'
+import type { FastifyInstance } from 'fastify'
 import { Logger } from '@nestjs/common';
 
-export default async function bootstrapServer() {
-  const serverOptions: FastifyServerOptions = {logger: true}
-  const instance: FastifyInstance = fastify(serverOptions);
-  const nestApp = await NestFactory.create<NestFastifyApplication>(
+export interface NestApp {
+  app: NestFastifyApplication;
+  instance: FastifyInstance;
+}
+
+export default async function bootstrapServer(): Promise<NestApp> {
+  const instance: FastifyInstance = fastify({logger: true});
+  const adapter = new FastifyAdapter(instance as any)
+  const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    new FastifyAdapter(instance as any),
+    adapter,
     {
       logger: !process.env.AWS_EXECUTION_ENV ? new Logger() : console
     }
   )
-  await nestApp.init()
-  return {
-    app: nestApp,
-    instance
-  }
+  await app.init()
+  return { app, instance }
 }
 
 async function main() {

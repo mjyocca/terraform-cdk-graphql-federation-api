@@ -1,14 +1,14 @@
+import { MercuriusFederationDriver, MercuriusFederationDriverConfig } from '@nestjs/mercurius';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { MercuriusDriver, MercuriusDriverConfig } from '@nestjs/mercurius';
 import { ProductModule } from './products/products.module'
 
 @Module({
   imports: [
-    GraphQLModule.forRoot<MercuriusDriverConfig>({
-      driver: MercuriusDriver,
-      graphiql: true,
+    GraphQLModule.forRoot<MercuriusFederationDriverConfig>({
+      driver: MercuriusFederationDriver,
       autoSchemaFile: true,
+      federationMetadata: true,
     }),
     ProductModule
   ],

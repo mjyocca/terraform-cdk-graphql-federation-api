@@ -5,8 +5,8 @@ export class Product {
   @Field(type => ID)
   id: string;
 
-  @Directive('@upper')
-  title: string;
+  @Field({ nullable: true })
+  title?: string;
 
   @Field({ nullable: true })
   description?: string;

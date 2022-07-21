@@ -22,7 +22,7 @@ const users: Record<any, any> = {
 
 const app = Fastify()
 const schema = `
-  extend type Query {
+  type Query {
     me: User
   }
 
@@ -53,6 +53,12 @@ app.register(mercurius, {
   federationMetadata: true,
 })
 
-app.listen({ port: 4001 }).then(() => {
-  console.log('admin => listening on port 4001')
-})
+export default app;
+
+
+const main = async () => {
+  await app.listen({ port: 4001 })
+  console.log('Admin: listening on port 4001')
+}
+
+if (require.main === module) main()

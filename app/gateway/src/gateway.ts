@@ -1,5 +1,6 @@
 import Fastify from 'fastify'
-import mercurius, { MercuriusGatewayService } from 'mercurius'
+import mercurius, { MercuriusGatewayService } from 'mercurius';
+import { getServices } from "./serviceMap"
 
 const app = Fastify({ logger: { name: 'gateway', level: 'info' } })
 
@@ -9,29 +10,19 @@ const errorHandler = (error: Error, service: MercuriusGatewayService) => {
   }
 }
 
-/* */
-const services = [
-  {
-    name: 'admin',
-    url: 'http://localhost:4001/graphql'
-  }
-]
-
 app.register(mercurius, {
   graphiql: true,
   gateway: {
-    services,
+    services: getServices('dev'),
     errorHandler,
   }
 })
 
 export default app
 
-/* run locally */
 const main = async () => {
   await app.listen({ port: 4000 })
-  console.log('listening on port 4000')
+  app.log.info(`Gateway: listening on port 4000`)
 }
 
 if (require.main === module) main()
-/* run locally */

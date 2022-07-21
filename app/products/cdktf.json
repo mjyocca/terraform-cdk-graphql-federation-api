@@ -1,0 +1,5 @@
+{
+  "language": "typescript",
+  "app": "./script.sh products && node ./dist/main.tf.js",
+  "projectId": "7593b9b0-5917-42bf-b2ef-8ea57c64b995"
+}

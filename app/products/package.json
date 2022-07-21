@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@apollo/subgraph": "2.0.2",
     "@fastify/aws-lambda": "^3.0.0",
     "@nestjs/common": "^9.0.3",
     "@nestjs/core": "^9.0.3",
@@ -25,10 +26,17 @@
     "rxjs": "^7.5.6"
   },
   "devDependencies": {
+    "@cdktf/provider-aws": "^8.0.21",
+    "@cdktf/provider-random": "^1.0.0",
     "@nestjs/cli": "^9.0.0",
+    "@packages/cdktf-constructs": "workspace:^1.0.0",
     "@types/aws-lambda": "^8.10.101",
+    "@types/dotenv-flow": "^3.2.0",
     "@types/node": "^18.0.4",
     "aws-lambda": "^1.0.7",
+    "cdktf": "^0.11.2",
+    "constructs": "^10.1.52",
+    "dotenv-flow": "^3.2.0",
     "ts-node": "^10.9.1",
     "typescript": "^4.7.4"
   }

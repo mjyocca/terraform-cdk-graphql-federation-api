@@ -2,6 +2,11 @@
 # Dependency directories
 node_modules/
 dist/
+artifact/
+
+# dotenv
+.env.local
+.env*.local
 
 .DS_STORE
 

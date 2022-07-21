@@ -1,0 +1,30 @@
+{
+  "name": "@packages/cdktf-constructs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "types": "main.ts",
+  "scripts": {
+    "get": "cdktf get",
+    "build": "tsc --pretty",
+    "postinstall": "pnpm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cdktf/provider-aws": "^8.0.21",
+    "@cdktf/provider-random": "^1.0.0",
+    "@types/aws-lambda": "^8.10.101",
+    "@types/node": "^18.0.4",
+    "cdktf": "^0.11.2",
+    "constructs": "^10.1.52",
+    "typescript": "^4.7.4"
+  },
+  "peerDependencies": {
+    "@cdktf/provider-aws": "^8.0.21",
+    "@cdktf/provider-random": "^1.0.0",
+    "cdktf": "^0.11.2",
+    "constructs": "^10.1.52"
+  }
+}
