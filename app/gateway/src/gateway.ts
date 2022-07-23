@@ -1,6 +1,8 @@
 import Fastify from 'fastify'
 import mercurius, { MercuriusGatewayService } from 'mercurius';
-import { getServices } from "./serviceMap"
+import { getServices } from "./serviceMap";
+import * as dotenv from 'dotenv-flow'
+dotenv.config({ default_node_env: 'dev' })
 
 const app = Fastify({ logger: { name: 'gateway', level: 'info' } })
 
@@ -13,7 +15,7 @@ const errorHandler = (error: Error, service: MercuriusGatewayService) => {
 app.register(mercurius, {
   graphiql: true,
   gateway: {
-    services: getServices('dev'),
+    services: getServices(),
     errorHandler,
   }
 })
