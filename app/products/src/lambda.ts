@@ -1,6 +1,6 @@
-import 'reflect-metadata'
-import awsLambdaFastify, { PromiseHandler, LambdaResponse } from '@fastify/aws-lambda'
-import type {Context, APIGatewayProxyEvent, APIGatewayProxyResult} from 'aws-lambda';
+import 'reflect-metadata';
+import awsLambdaFastify, { PromiseHandler, LambdaResponse } from '@fastify/aws-lambda';
+import type { Context, APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import bootstrapServer from './main';
 import type { NestApp } from './main';
 
@@ -13,9 +13,9 @@ export const handler = async (event: APIGatewayProxyEvent, context: Context): Pr
   }
   if (!cachedProxy) {
     cachedProxy = awsLambdaFastify(cachedNestApp.instance, {
-      decorateRequest: true
+      decorateRequest: true,
     });
     await cachedNestApp.instance.ready();
   }
   return cachedProxy(event, context);
-}
+};

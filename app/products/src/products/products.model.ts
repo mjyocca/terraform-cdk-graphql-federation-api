@@ -2,7 +2,7 @@ import { Directive, Field, ID, ObjectType } from '@nestjs/graphql';
 
 @ObjectType({ description: 'product' })
 export class Product {
-  @Field(type => ID)
+  @Field((type) => ID)
   id: string;
 
   @Field({ nullable: true })
@@ -14,6 +14,6 @@ export class Product {
   @Field()
   creationDate: Date;
 
-  @Field(type => [String])
+  @Field((type) => [String])
   ingredients: string[];
 }

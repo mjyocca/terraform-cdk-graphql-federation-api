@@ -1,7 +1,7 @@
 import { MercuriusFederationDriver, MercuriusFederationDriverConfig } from '@nestjs/mercurius';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ProductModule } from './products/products.module'
+import { ProductModule } from './products/products.module';
 
 @Module({
   imports: [
@@ -10,7 +10,7 @@ import { ProductModule } from './products/products.module'
       autoSchemaFile: true,
       federationMetadata: true,
     }),
-    ProductModule
+    ProductModule,
   ],
 })
 export class AppModule {}

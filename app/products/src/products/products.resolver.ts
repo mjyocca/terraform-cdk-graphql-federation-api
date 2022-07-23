@@ -23,9 +23,8 @@ export class ProductsResolver {
   }
 
   @Mutation((returns) => Product)
-  async addProduct():
-  Promise<Product> {
-    const product = await this.productService.create("");
+  async addProduct(): Promise<Product> {
+    const product = await this.productService.create('');
     return product;
   }
 

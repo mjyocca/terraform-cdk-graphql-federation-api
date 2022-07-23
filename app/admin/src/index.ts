@@ -1,26 +1,26 @@
-import Fastify, { FastifyRequest, FastifyReply } from 'fastify'
-import mercurius, { IResolvers } from 'mercurius'
+import Fastify, { FastifyRequest, FastifyReply } from 'fastify';
+import mercurius, { IResolvers } from 'mercurius';
 
 const buildContext = async (req: FastifyRequest, _reply: FastifyReply) => {
   return {
-    authorization: req.headers?.authorization
-  }
-}
+    authorization: req.headers?.authorization,
+  };
+};
 
 const users: Record<any, any> = {
   1: {
     id: '1',
     name: 'John',
-    username: '@john'
+    username: '@john',
   },
   2: {
     id: '2',
     name: 'Jane',
-    username: '@jane'
-  }
-}
+    username: '@jane',
+  },
+};
 
-const app = Fastify()
+const app = Fastify();
 const schema = `
   type Query {
     me: User
@@ -31,34 +31,33 @@ const schema = `
     name: String
     username: String
   }
-`
+`;
 
 const resolvers: IResolvers = {
   Query: {
     me: () => {
-      return users['1']
-    }
+      return users['1'];
+    },
   },
   User: {
     __resolveReference: (source, args, context, info) => {
-      return users[source.id]
-    }
-  }
-}
+      return users[source.id];
+    },
+  },
+};
 
 app.register(mercurius, {
   schema,
   resolvers,
   context: buildContext,
   federationMetadata: true,
-})
+});
 
 export default app;
 
-
 const main = async () => {
-  await app.listen({ port: 4001 })
-  console.log('Admin: listening on port 4001')
-}
+  await app.listen({ port: 4001 });
+  console.log('Admin: listening on port 4001');
+};
 
-if (require.main === module) main()
+if (require.main === module) main();

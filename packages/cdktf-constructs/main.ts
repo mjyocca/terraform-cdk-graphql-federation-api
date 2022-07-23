@@ -1,80 +1,80 @@
-import { Construct } from "constructs";
-import { TerraformStack, TerraformAsset, AssetType, TerraformOutput } from "cdktf";
-import * as aws from "@cdktf/provider-aws";
-import * as random from "@cdktf/provider-random";
-import type { AwsProviderConfig } from "@cdktf/provider-aws";
+import { Construct } from 'constructs';
+import { TerraformStack, TerraformAsset, AssetType, TerraformOutput } from 'cdktf';
+import * as aws from '@cdktf/provider-aws';
+import * as random from '@cdktf/provider-random';
+import type { AwsProviderConfig } from '@cdktf/provider-aws';
 
 const lambdaRolePolicy = {
-  "Version": "2012-10-17",
-  "Statement": [
+  Version: '2012-10-17',
+  Statement: [
     {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
+      Action: 'sts:AssumeRole',
+      Principal: {
+        Service: 'lambda.amazonaws.com',
       },
-      "Effect": "Allow",
-      "Sid": ""
-    }
-  ]
+      Effect: 'Allow',
+      Sid: '',
+    },
+  ],
 };
 
 export interface LambdaFunctionConfig {
-  path: string,
-  handler: string,
-  runtime: string,
-  stageName: string,
-  version: string,
-  awsProviderConfig: Partial<AwsProviderConfig>,
-};
+  path: string;
+  handler: string;
+  runtime: string;
+  stageName: string;
+  version: string;
+  awsProviderConfig: Partial<AwsProviderConfig>;
+}
 
 export class LambdaStack extends TerraformStack {
   constructor(scope: Construct, name: string, config: LambdaFunctionConfig) {
     super(scope, name);
 
-    new aws.AwsProvider(this, "aws", {
-      region: "us-west-2",
-      ...config.awsProviderConfig
+    new aws.AwsProvider(this, 'aws', {
+      region: 'us-west-2',
+      ...config.awsProviderConfig,
     });
 
-    new random.RandomProvider(this, "random");
+    new random.RandomProvider(this, 'random');
 
     // Create random value
-    const pet = new random.Pet(this, "random-name", {
+    const pet = new random.Pet(this, 'random-name', {
       length: 2,
     });
 
     // Create Lambda executable
-    const asset = new TerraformAsset(this, "lambda-asset", {
+    const asset = new TerraformAsset(this, 'lambda-asset', {
       path: config.path,
       type: AssetType.ARCHIVE, // if left empty it infers directory and file
     });
 
     // Create unique S3 bucket that hosts Lambda executable
-    const bucket = new aws.s3.S3Bucket(this, "bucket", {
+    const bucket = new aws.s3.S3Bucket(this, 'bucket', {
       bucketPrefix: `learn-cdktf-${name}`,
     });
 
     // Upload Lambda zip file to newly created S3 bucket
-    const lambdaArchive = new aws.s3.S3Object(this, "lambda-archive", {
+    const lambdaArchive = new aws.s3.S3Object(this, 'lambda-archive', {
       bucket: bucket.bucket,
       key: `${config.version}/${asset.fileName}`,
       source: asset.path, // returns a posix path
     });
 
     // Create Lambda role
-    const role = new aws.iam.IamRole(this, "lambda-exec", {
+    const role = new aws.iam.IamRole(this, 'lambda-exec', {
       name: `learn-cdktf-${name}-${pet.id}`,
-      assumeRolePolicy: JSON.stringify(lambdaRolePolicy)
+      assumeRolePolicy: JSON.stringify(lambdaRolePolicy),
     });
 
     // Add execution role for lambda to write to CloudWatch logs
-    new aws.iam.IamRolePolicyAttachment(this, "lambda-managed-policy", {
+    new aws.iam.IamRolePolicyAttachment(this, 'lambda-managed-policy', {
       policyArn: 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole',
-      role: role.name
+      role: role.name,
     });
 
     // Create Lambda function
-    const lambdaFunc = new aws.lambdafunction.LambdaFunction(this, "learn-cdktf-lambda", {
+    const lambdaFunc = new aws.lambdafunction.LambdaFunction(this, 'learn-cdktf-lambda', {
       functionName: `learn-cdktf-${name}-${pet.id}`,
       s3Bucket: bucket.bucket,
       s3Key: lambdaArchive.key,
@@ -82,26 +82,26 @@ export class LambdaStack extends TerraformStack {
       runtime: config.runtime,
       role: role.arn,
       memorySize: 256,
-      timeout: 8
+      timeout: 8,
     });
 
     // Create and configure API gateway
-    const api = new aws.apigatewayv2.Apigatewayv2Api(this, "api-gw", {
+    const api = new aws.apigatewayv2.Apigatewayv2Api(this, 'api-gw', {
       name: name,
-      protocolType: "HTTP",
+      protocolType: 'HTTP',
       target: lambdaFunc.arn,
-      routeKey: "POST /graphql"
+      routeKey: 'POST /graphql',
     });
 
-    new aws.lambdafunction.LambdaPermission(this, "apigw-lambda", {
+    new aws.lambdafunction.LambdaPermission(this, 'apigw-lambda', {
       functionName: lambdaFunc.functionName,
-      action: "lambda:InvokeFunction",
-      principal: "apigateway.amazonaws.com",
+      action: 'lambda:InvokeFunction',
+      principal: 'apigateway.amazonaws.com',
       sourceArn: `${api.executionArn}/*/*`,
     });
 
     new TerraformOutput(this, 'url', {
-      value: api.apiEndpoint
+      value: api.apiEndpoint,
     });
   }
-};
+}
