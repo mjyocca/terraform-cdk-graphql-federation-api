@@ -1,0 +1,4 @@
+# Rename file to auto.tfvars
+# pass `-var-file="auto.tfvars"` to terraform cli
+AWS_ACCESS_KEY = ""
+AWS_SECRET_KEY = ""

@@ -23,7 +23,7 @@ const serviceList: GQLService[] = [
 ];
 
 export const getServices = (): MercuriusGatewayService[] => {
-  const env = process.env.NODE_ENV as string;
+  const env = process.env.STAGE as string;
   return serviceList.map(({ name, url }) => {
     return { name, url: url[env] };
   });

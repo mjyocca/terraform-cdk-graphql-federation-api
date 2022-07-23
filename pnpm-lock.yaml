@@ -41,6 +41,7 @@ importers:
       '@nestjs/core': 9.0.4_iiv3ghisctajo7kghojdy6mwhq
       '@nestjs/graphql': 10.0.18_bnxsz6gej7rshusus3leng65aq
       '@nestjs/mercurius': 10.0.17_hfj4sxnpeuu6wvwisdj27xcmjm
+      dotenv-flow: 3.2.0
       fastify: 4.2.1
       graphql: 16.5.0
       mercurius: 10.1.0
@@ -54,7 +55,6 @@ importers:
       '@types/node': 18.0.6
       cdktf: 0.11.2_constructs@10.1.52
       constructs: 10.1.52
-      dotenv-flow: 3.2.0
       typescript: 4.7.4
 
   app/gateway:
@@ -84,6 +84,7 @@ importers:
       '@nestjs/core': 9.0.4_iiv3ghisctajo7kghojdy6mwhq
       '@nestjs/graphql': 10.0.18_bnxsz6gej7rshusus3leng65aq
       '@nestjs/mercurius': 10.0.17_hfj4sxnpeuu6wvwisdj27xcmjm
+      dotenv-flow: 3.2.0
       fastify: 4.2.1
       graphql: 16.5.0
       mercurius: 10.1.0
@@ -97,53 +98,66 @@ importers:
       '@types/node': 18.0.6
       cdktf: 0.11.2_constructs@10.1.52
       constructs: 10.1.52
-      dotenv-flow: 3.2.0
       typescript: 4.7.4
 
-  app/gateway/artifact:
+  app/products:
     specifiers:
+      '@apollo/subgraph': 2.0.2
       '@cdktf/provider-aws': ^8.0.21
       '@cdktf/provider-random': ^1.0.0
       '@fastify/aws-lambda': ^3.0.0
+      '@nestjs/cli': ^9.0.0
       '@nestjs/common': ^9.0.3
       '@nestjs/core': ^9.0.3
       '@nestjs/graphql': ^10.0.18
       '@nestjs/mercurius': ^10.0.17
+      '@nestjs/platform-fastify': ^9.0.3
       '@packages/cdktf-constructs': workspace:^1.0.0
+      '@types/aws-lambda': ^8.10.101
       '@types/dotenv-flow': ^3.2.0
       '@types/node': ^18.0.4
+      aws-lambda: ^1.0.7
       cdktf: ^0.11.2
       constructs: ^10.1.52
       dotenv-flow: ^3.2.0
       fastify: ^4.2.1
-      graphql: ^16.5.0
+      graphql: 16.5.0
       mercurius: ^10.1.0
+      npm: ^8.14.0
       reflect-metadata: ^0.1.13
       rxjs: ^7.5.6
+      ts-node: ^10.9.1
       typescript: ^4.7.4
     dependencies:
+      '@apollo/subgraph': 2.0.2_graphql@16.5.0
       '@fastify/aws-lambda': 3.0.0
       '@nestjs/common': 9.0.4_j5hagqx4mwzscud4kyjdvubauy
       '@nestjs/core': 9.0.4_iiv3ghisctajo7kghojdy6mwhq
-      '@nestjs/graphql': 10.0.18_bnxsz6gej7rshusus3leng65aq
+      '@nestjs/graphql': 10.0.18_3jv3quvw3aadulazinjeifmrza
       '@nestjs/mercurius': 10.0.17_hfj4sxnpeuu6wvwisdj27xcmjm
+      '@nestjs/platform-fastify': 9.0.4_nea3ckb3237zovpoezeipz3wve
+      dotenv-flow: 3.2.0
       fastify: 4.2.1
       graphql: 16.5.0
       mercurius: 10.1.0
+      npm: 8.14.0
       reflect-metadata: 0.1.13
       rxjs: 7.5.6
     devDependencies:
       '@cdktf/provider-aws': 8.0.21_ahg5nj3nsy7sg3ixfkziglnpta
       '@cdktf/provider-random': 1.0.0_ahg5nj3nsy7sg3ixfkziglnpta
-      '@packages/cdktf-constructs': link:../../../packages/cdktf-constructs
+      '@nestjs/cli': 9.0.0
+      '@packages/cdktf-constructs': link:../../packages/cdktf-constructs
+      '@types/aws-lambda': 8.10.101
       '@types/dotenv-flow': 3.2.0
       '@types/node': 18.0.6
+      aws-lambda: 1.0.7
       cdktf: 0.11.2_constructs@10.1.52
       constructs: 10.1.52
-      dotenv-flow: 3.2.0
+      ts-node: 10.9.1_tdn3ypgnfy6bmey2q4hu5jonwi
       typescript: 4.7.4
 
-  app/products:
+  app/products/dist:
     specifiers:
       '@apollo/subgraph': 2.0.2
       '@cdktf/provider-aws': ^8.0.21
@@ -189,7 +203,7 @@ importers:
       '@cdktf/provider-aws': 8.0.21_ahg5nj3nsy7sg3ixfkziglnpta
       '@cdktf/provider-random': 1.0.0_ahg5nj3nsy7sg3ixfkziglnpta
       '@nestjs/cli': 9.0.0
-      '@packages/cdktf-constructs': link:../../packages/cdktf-constructs
+      '@packages/cdktf-constructs': link:../../../packages/cdktf-constructs
       '@types/aws-lambda': 8.10.101
       '@types/dotenv-flow': 3.2.0
       '@types/node': 18.0.6
@@ -1519,12 +1533,10 @@ packages:
     engines: {node: '>= 8.0.0'}
     dependencies:
       dotenv: 8.6.0
-    dev: true
 
   /dotenv/8.6.0:
     resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}
     engines: {node: '>=10'}
-    dev: true
 
   /ee-first/1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}

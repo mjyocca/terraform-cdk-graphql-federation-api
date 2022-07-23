@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "turbo run build --parallel",
+    "build": "turbo run build",
     "start": "turbo run start",
     "dev": "turbo run dev --parallel",
     "deploy:turbo": "turbo run deploy"
