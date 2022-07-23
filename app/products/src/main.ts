@@ -12,7 +12,7 @@ export interface NestApp {
 }
 
 export default async function bootstrapServer(): Promise<NestApp> {
-  const instance: FastifyInstance = fastify({logger: true});
+  const instance: FastifyInstance = fastify({ logger: true });
   const adapter = new FastifyAdapter(instance as any)
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
@@ -29,6 +29,7 @@ async function main() {
   try {
     const app = await bootstrapServer();
     app.instance.listen({ port: 4003 })
+    app.instance.log.info(`Products: listening on port 4003`)
   } catch(err) {
     console.error(err)
   }
