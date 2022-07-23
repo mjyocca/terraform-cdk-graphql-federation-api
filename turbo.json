@@ -1,0 +1,28 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "baseBranch": "origin/main",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        "dist",
+        "dist/**",
+        "build/**"
+      ]
+    },
+    "start": {
+      "dependsOn": ["build"],
+      "outputs": ["dist"]
+    },
+    "dev": {},
+    "deploy": {
+      "dependsOn": ["build"],
+      "outputs": []
+    },
+    "gateway#deploy": {
+      "dependsOn": ["admin#deploy", "products#deploy"],
+      "outputs": []
+    },
+    "products#start": {}
+  }
+}

@@ -6,13 +6,22 @@ import { InputType } from '@nestjs/graphql';
 @InputType()
 class NewProductsInput {}
 
-const products: Product[] = [{
+const products: Product[] = [
+  {
   id: "001",
   title: "Product 1",
   description: "[Placeholder]",
   creationDate: new Date(),
   ingredients: []
-}]
+}, 
+{
+  id: "002",
+  title: "Product 2",
+  description: "[Placeholder 2]",
+  creationDate: new Date(),
+  ingredients: []
+}
+]
 
 @Injectable()
 export class ProductService {
@@ -27,6 +36,9 @@ export class ProductService {
 
   async findAll(productArgs: ProductArgs): Promise<Product[]> {
     // return [] as Product[];
+    if (productArgs) {
+      return products.filter((p) => p.id === productArgs.id)
+    }
     return products as Product[]
   }
 

@@ -2,12 +2,11 @@
   "name": "@packages/cdktf-constructs",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
-  "types": "main.ts",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "files": ["dist"],
   "scripts": {
-    "get": "cdktf get",
-    "build": "tsc --pretty",
-    "postinstall": "pnpm run build"
+    "build": "tsc --pretty"
   },
   "keywords": [],
   "author": "",

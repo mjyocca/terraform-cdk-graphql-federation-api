@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "nest build",
     "start": "nest start",
-    "build": "nest build"
+    "dev": "nest start --watch",
+    "deploy": "echo 'cdktf deploy'"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +21,7 @@
     "@nestjs/mercurius": "^10.0.17",
     "@nestjs/platform-fastify": "^9.0.3",
     "fastify": "^4.2.1",
+    "graphql": "16.5.0",
     "mercurius": "^10.1.0",
     "npm": "^8.14.0",
     "reflect-metadata": "^0.1.13",

@@ -28,6 +28,7 @@
     "strictNullChecks": true,
     "stripInternal": true,
     "target": "ES2018",
+    "outDir": "dist"
   },
   "exclude": ["node_modules", "**/*.spec.ts", "dist"]
 }

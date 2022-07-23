@@ -5,7 +5,7 @@ type GQLService = {
   url: Record<string, string>
 }
 
-const serviceList: { name: string, url: Record<string, string> }[] = [
+const serviceList: GQLService[] = [
   {
     name: 'products',
     url: {
@@ -16,7 +16,7 @@ const serviceList: { name: string, url: Record<string, string> }[] = [
   {
     name: 'admin',
     url: {
-      local: 'https://localhost:4001/graphql',
+      local: 'http://localhost:4001/graphql',
       dev: 'https://elov73gzal.execute-api.us-west-2.amazonaws.com/graphql'
     }
   }

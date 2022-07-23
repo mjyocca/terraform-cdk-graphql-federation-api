@@ -5,7 +5,9 @@
   "main": "dist/src/gateway.js",
   "scripts": {
     "build": "tsc --pretty",
-    "start": "pnpm run build && node ./dist/src/gateway.js"
+    "start": "pnpm run build && node ./dist/src/gateway.js",
+    "dev": "pnpm start",
+    "deploy": "echo 'cdktf deploy'"
   },
   "keywords": [],
   "author": "",

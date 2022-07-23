@@ -1,8 +1,6 @@
 
 # Dependency directories
 node_modules/
-dist/
-artifact/
 
 # dotenv
 .env.local
@@ -20,3 +18,11 @@ cdktf.log
 .gen
 .terraform
 # cdktf
+
+# .turbo
+.turbo
+
+# task artifacts
+dist
+artifact 
+build
