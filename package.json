@@ -8,7 +8,9 @@
     "start": "turbo run start",
     "dev": "turbo run dev --parallel",
     "deploy:infrastructure": "cd infrastructure/dev && terraform apply --auto-approve -var-file='auto.tfvars'",
-    "deploy:turbo": "pnpm run deploy:infrastructure && turbo run deploy"
+    "deploy:turbo": "pnpm run deploy:infrastructure && turbo run deploy",
+    "destroy:infrastructure": "cd infrastructure/dev && terraform destroy --auto-approve -var-file='auto.tfvars'",
+    "destroy:turbo": "turbo run destroy && pnpm run destroy:infrastructure"
   },
   "keywords": [],
   "author": "",

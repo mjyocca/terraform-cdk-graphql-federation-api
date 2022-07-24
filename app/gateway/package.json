@@ -7,7 +7,8 @@
     "build": "tsc --pretty",
     "start": "pnpm run build && node ./dist/src/gateway.js",
     "dev": "pnpm start",
-    "deploy": "cdktf deploy --auto-approve"
+    "deploy": "cdktf deploy --auto-approve",
+    "destroy": "cdktf destroy --auto-approve"
   },
   "keywords": [],
   "author": "",

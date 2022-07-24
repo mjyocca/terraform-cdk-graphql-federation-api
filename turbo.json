@@ -23,6 +23,13 @@
       "dependsOn": ["admin#deploy", "products#deploy"],
       "outputs": []
     },
-    "products#start": {}
+    "products#start": {},
+    "destroy": {},
+    "products#destroy": {
+      "dependsOn": ["gateway#destroy"]
+    },
+    "admin#destroy": {
+      "dependsOn": ["gateway#destroy"]
+    }
   }
 }

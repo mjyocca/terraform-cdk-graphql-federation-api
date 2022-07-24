@@ -7,7 +7,8 @@
     "build": "nest build",
     "start": "nest start",
     "dev": "nest start --watch",
-    "deploy": "cdktf deploy --auto-approve"
+    "deploy": "cdktf deploy --auto-approve",
+    "destroy": "cdktf destroy --auto-approve"
   },
   "keywords": [],
   "author": "",
