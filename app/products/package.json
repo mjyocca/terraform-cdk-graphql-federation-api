@@ -33,6 +33,7 @@
     "@cdktf/provider-random": "^1.0.0",
     "@nestjs/cli": "^9.0.0",
     "@packages/cdktf-constructs": "workspace:^1.0.0",
+    "@packages/scripts": "workspace:^1.0.0",
     "@types/aws-lambda": "^8.10.101",
     "@types/dotenv-flow": "^3.2.0",
     "@types/node": "^18.0.4",

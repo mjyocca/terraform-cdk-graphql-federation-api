@@ -29,6 +29,7 @@
     "@cdktf/provider-aws": "^8.0.21",
     "@cdktf/provider-random": "^1.0.0",
     "@packages/cdktf-constructs": "workspace:^1.0.0",
+    "@packages/scripts": "workspace:^1.0.0",
     "@types/dotenv-flow": "^3.2.0",
     "@types/node": "^18.0.4",
     "cdktf": "^0.11.2",

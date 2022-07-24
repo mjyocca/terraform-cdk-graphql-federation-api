@@ -24,6 +24,7 @@ importers:
       '@nestjs/graphql': ^10.0.18
       '@nestjs/mercurius': ^10.0.17
       '@packages/cdktf-constructs': workspace:^1.0.0
+      '@packages/scripts': workspace:^1.0.0
       '@types/dotenv-flow': ^3.2.0
       '@types/node': ^18.0.4
       cdktf: ^0.11.2
@@ -51,6 +52,7 @@ importers:
       '@cdktf/provider-aws': 8.0.21_ahg5nj3nsy7sg3ixfkziglnpta
       '@cdktf/provider-random': 1.0.0_ahg5nj3nsy7sg3ixfkziglnpta
       '@packages/cdktf-constructs': link:../../packages/cdktf-constructs
+      '@packages/scripts': link:../../packages/scripts
       '@types/dotenv-flow': 3.2.0
       '@types/node': 18.0.6
       cdktf: 0.11.2_constructs@10.1.52
@@ -67,6 +69,7 @@ importers:
       '@nestjs/graphql': ^10.0.18
       '@nestjs/mercurius': ^10.0.17
       '@packages/cdktf-constructs': workspace:^1.0.0
+      '@packages/scripts': workspace:^1.0.0
       '@types/dotenv-flow': ^3.2.0
       '@types/node': ^18.0.4
       cdktf: ^0.11.2
@@ -94,6 +97,7 @@ importers:
       '@cdktf/provider-aws': 8.0.21_ahg5nj3nsy7sg3ixfkziglnpta
       '@cdktf/provider-random': 1.0.0_ahg5nj3nsy7sg3ixfkziglnpta
       '@packages/cdktf-constructs': link:../../packages/cdktf-constructs
+      '@packages/scripts': link:../../packages/scripts
       '@types/dotenv-flow': 3.2.0
       '@types/node': 18.0.6
       cdktf: 0.11.2_constructs@10.1.52
@@ -113,6 +117,7 @@ importers:
       '@nestjs/mercurius': ^10.0.17
       '@nestjs/platform-fastify': ^9.0.3
       '@packages/cdktf-constructs': workspace:^1.0.0
+      '@packages/scripts': workspace:^1.0.0
       '@types/aws-lambda': ^8.10.101
       '@types/dotenv-flow': ^3.2.0
       '@types/node': ^18.0.4
@@ -148,6 +153,7 @@ importers:
       '@cdktf/provider-random': 1.0.0_ahg5nj3nsy7sg3ixfkziglnpta
       '@nestjs/cli': 9.0.0
       '@packages/cdktf-constructs': link:../../packages/cdktf-constructs
+      '@packages/scripts': link:../../packages/scripts
       '@types/aws-lambda': 8.10.101
       '@types/dotenv-flow': 3.2.0
       '@types/node': 18.0.6
@@ -193,6 +199,7 @@ importers:
       '@nestjs/graphql': 10.0.18_3jv3quvw3aadulazinjeifmrza
       '@nestjs/mercurius': 10.0.17_hfj4sxnpeuu6wvwisdj27xcmjm
       '@nestjs/platform-fastify': 9.0.4_nea3ckb3237zovpoezeipz3wve
+      dotenv-flow: 3.2.0
       fastify: 4.2.1
       graphql: 16.5.0
       mercurius: 10.1.0
@@ -210,7 +217,6 @@ importers:
       aws-lambda: 1.0.7
       cdktf: 0.11.2_constructs@10.1.52
       constructs: 10.1.52
-      dotenv-flow: 3.2.0
       ts-node: 10.9.1_tdn3ypgnfy6bmey2q4hu5jonwi
       typescript: 4.7.4
 
@@ -231,6 +237,9 @@ importers:
       cdktf: 0.11.2_constructs@10.1.52
       constructs: 10.1.52
       typescript: 4.7.4
+
+  packages/scripts:
+    specifiers: {}
 
 packages:
 
@@ -719,7 +728,7 @@ packages:
       mercurius: ^8.12.0 || ^9.0.0 || ^10.0.0
     dependencies:
       '@nestjs/common': 9.0.4_j5hagqx4mwzscud4kyjdvubauy
-      '@nestjs/graphql': 10.0.18_bnxsz6gej7rshusus3leng65aq
+      '@nestjs/graphql': 10.0.18_3jv3quvw3aadulazinjeifmrza
       fastify: 4.2.1
       mercurius: 10.1.0
       tslib: 2.4.0
@@ -1533,10 +1542,12 @@ packages:
     engines: {node: '>= 8.0.0'}
     dependencies:
       dotenv: 8.6.0
+    dev: false
 
   /dotenv/8.6.0:
     resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}
     engines: {node: '>=10'}
+    dev: false
 
   /ee-first/1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}

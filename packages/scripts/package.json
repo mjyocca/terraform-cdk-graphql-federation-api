@@ -1,0 +1,12 @@
+{
+  "name": "@packages/scripts",
+  "version": "1.0.0",
+  "description": "",
+  "files": ["./script.sh"],
+  "scripts": {
+    "postinstall": "chmod +x ./script.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

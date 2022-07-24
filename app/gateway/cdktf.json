@@ -1,5 +1,5 @@
 {
   "language": "typescript",
-  "app": "./script.sh gateway && node ./dist/main.tf.js",
+  "app": "node_modules/@packages/scripts/script.sh gateway && node ./dist/main.tf.js",
   "projectId": "9391882e-bebf-4ad0-9f52-1c5fc5a79bd2"
 }

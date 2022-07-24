@@ -1,5 +1,5 @@
 {
   "language": "typescript",
-  "app": "./script.sh admin && node ./dist/main.tf.js",
+  "app": "node_modules/@packages/scripts/script.sh admin && node ./dist/main.tf.js",
   "projectId": "d8809ffe-c515-4fee-9e62-ba5f61c580d9"
 }
