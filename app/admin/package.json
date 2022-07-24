@@ -7,7 +7,7 @@
     "build": "tsc --pretty",
     "start": "tsc && node ./dist/src/index.js",
     "dev": "pnpm start",
-    "deploy": "echo 'cdktf deploy'"
+    "deploy": "cdktf deploy --auto-approve"
   },
   "keywords": [],
   "author": "",
